@@ -6,8 +6,9 @@ public class FrogMovement : MonoBehaviour
 {
     [SerializeField]
     float leapForce = 5;
-    bool IsFacingRight = true;
     float rayDistance = 100;
+    bool IsFacingRight = true;
+    bool HasJumped = false;
 
     Vector2 leapArc;
     Vector2 rayDirection;
@@ -25,17 +26,30 @@ public class FrogMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(!HasJumped)
         {
-            rB.AddForce(leapArc, ForceMode2D.Impulse);
+            StartCoroutine(FrogJump());
         }
 
+        CheckWallCollision();
+    }
+
+    IEnumerator FrogJump()
+    {
+        HasJumped = true;
+        yield return new WaitForSecondsRealtime(3f);
+        rB.AddForce(leapArc, ForceMode2D.Impulse);
+        HasJumped = false;
+    }
+
+    private void CheckWallCollision()
+    {
         RaycastHit2D wallInfo = Physics2D.Raycast(wallDetection.position, rayDirection, rayDistance,
             1 << LayerMask.NameToLayer("Walls"));
 
         if (wallInfo.distance < 0.05)
         {
-            if(IsFacingRight == true)
+            if (IsFacingRight == true)
             {
                 transform.eulerAngles = new Vector3(0, -180, 0);
                 rayDirection = new Vector2(-1, 0);
@@ -50,8 +64,7 @@ public class FrogMovement : MonoBehaviour
                 IsFacingRight = true;
             }
         }
-
         Debug.DrawRay(wallDetection.position, rayDirection);
-        Debug.Log(wallInfo.distance);
+        //Debug.Log(wallInfo.distance);
     }
 }
