@@ -13,10 +13,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Frogs
+  - Walls
+  - Ground
+  - Background
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3221064505
+    locked: 0
+  - name: Midground
+    uniqueID: 3856218621
+    locked: 0
+  - name: Player
+    uniqueID: 4020720653
+    locked: 0
+  - name: Foreground
+    uniqueID: 657553097
     locked: 0
