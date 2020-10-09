@@ -11,6 +11,8 @@ public class PlayerLevelEditor : MonoBehaviour
     [SerializeField] GameObject cursor;
     [SerializeField] GameObject playerSpawnedTiles;
 
+    [SerializeField] LayerMask allTilesLayer; //these are tiles that have already been placed by the player or the tilemap
+
     private void Update()
     {
         CalculatePosition();
@@ -23,7 +25,13 @@ public class PlayerLevelEditor : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject spawnedTile = Instantiate(tile, tilePosition, Quaternion.identity, playerSpawnedTiles.transform);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D rayHit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, allTilesLayer);
+
+            if(rayHit.collider == null) //checks whether cursor is over an already placed tile (includes ground, walls, player spawned tiles and foreground items)
+            {
+                GameObject spawnedTile = Instantiate(tile, tilePosition, Quaternion.identity, playerSpawnedTiles.transform);
+            }
         }
     }
 

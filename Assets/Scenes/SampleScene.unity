@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 154750549}
   m_Layer: 10
   m_Name: Ground Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -824,7 +824,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -960,9 +960,9 @@ GameObject:
   - component: {fileID: 324047329}
   - component: {fileID: 324047328}
   - component: {fileID: 324047327}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Spring
-  m_TagString: Untagged
+  m_TagString: PlacedTiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1219,6 +1219,9 @@ MonoBehaviour:
   tile: {fileID: 324047326}
   cursor: {fileID: 1996115053}
   playerSpawnedTiles: {fileID: 1800228487}
+  allTilesLayer:
+    serializedVersion: 2
+    m_Bits: 11776
 --- !u!4 &1094335990
 Transform:
   m_ObjectHideFlags: 0
@@ -1244,7 +1247,7 @@ GameObject:
   - component: {fileID: 1131337773}
   - component: {fileID: 1131337775}
   - component: {fileID: 1131337774}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Background Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4792,7 +4795,8 @@ GameObject:
   - component: {fileID: 1394241921}
   - component: {fileID: 1394241923}
   - component: {fileID: 1394241922}
-  m_Layer: 0
+  - component: {fileID: 1394241924}
+  m_Layer: 11
   m_Name: Foreground Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5707,6 +5711,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &1394241924
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394241920}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!1 &1800228487
 GameObject:
   m_ObjectHideFlags: 0
@@ -5716,9 +5736,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1800228488}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Player Spawned Tiles
-  m_TagString: Untagged
+  m_TagString: PlacedTiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5751,7 +5771,7 @@ GameObject:
   - component: {fileID: 1873782985}
   m_Layer: 9
   m_Name: Walls Tilemap
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
