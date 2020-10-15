@@ -6243,10 +6243,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7086980388376563941, guid: ac22f70d05444cc4e87ca85460832929,
+        type: 3}
+      propertyPath: IsFacingRight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7086980388376563943, guid: ac22f70d05444cc4e87ca85460832929,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.75
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 7086980388376563943, guid: ac22f70d05444cc4e87ca85460832929,
         type: 3}
