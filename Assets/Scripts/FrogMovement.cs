@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class FrogMovement : MonoBehaviour
 {
-    [SerializeField]
-    float leapForce = 5;
-    float rayDistance = 100;
-    bool IsFacingRight = true;
-    bool HasJumped = false;
+    [SerializeField] 
+    float leapForce = 5;        //the force of the frogs jump
+
+    float rayDistance = 100;    //distance of raycast wall detector
+    bool IsFacingRight = true;  //is the frog facing right
+    bool HasJumped = false;     //has the frog jumped 
 
     Vector2 leapArc;
     Vector2 rayDirection;
@@ -34,6 +35,7 @@ public class FrogMovement : MonoBehaviour
         CheckWallCollision();
     }
 
+    //This coroutine makes the frog jump every three seconds.
     IEnumerator FrogJump()
     {
         HasJumped = true;
@@ -42,6 +44,10 @@ public class FrogMovement : MonoBehaviour
         HasJumped = false;
     }
 
+    /// <summary>
+    /// Using a raycast, this method checks whether a frog has hit a wall. If the raycast distance is lower than 0.05,
+    /// the frog has hit a wall and the frog will turn around.
+    /// </summary>
     private void CheckWallCollision()
     {
         RaycastHit2D wallInfo = Physics2D.Raycast(wallDetection.position, rayDirection, rayDistance,

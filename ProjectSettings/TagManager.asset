@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Walls
+  - Ground
+  - PlacedTiles
+  - Frog
   layers:
   - Default
   - TransparentFX
@@ -16,9 +20,9 @@ TagManager:
   - Frogs
   - Walls
   - Ground
+  - Foreground
   - Background
-  - 
-  - 
+  - Spawned Tiles
   - 
   - 
   - 
@@ -47,9 +51,12 @@ TagManager:
   - name: Midground
     uniqueID: 3856218621
     locked: 0
-  - name: Player
+  - name: Frogs & Placed Tiles
     uniqueID: 4020720653
     locked: 0
   - name: Foreground
     uniqueID: 657553097
+    locked: 0
+  - name: Player
+    uniqueID: 2881603353
     locked: 0
