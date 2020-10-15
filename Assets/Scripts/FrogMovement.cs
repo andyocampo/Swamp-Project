@@ -35,7 +35,7 @@ public class FrogMovement : MonoBehaviour
         CheckWallCollision();
     }
 
-    //This coroutine makes the frog jump every 3 seconds.
+    //This coroutine makes the frog jump every three seconds.
     IEnumerator FrogJump()
     {
         HasJumped = true;
