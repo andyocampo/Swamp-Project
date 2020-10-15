@@ -7,9 +7,14 @@ public class FrogSpawner : MonoBehaviour
     [SerializeField]
     GameObject frog;
 
-    [SerializeField]
-    private int amountOfFrogs; //number of frogs in level
+    public int setAmountOfFrogs;
+    public static int amountOfFrogs;
     private int frogSpawned = 0;
+
+    private void Awake()
+    {
+        amountOfFrogs = setAmountOfFrogs;
+    }
 
     private void Update()
     {

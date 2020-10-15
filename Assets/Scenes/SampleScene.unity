@@ -1217,6 +1217,7 @@ GameObject:
   - component: {fileID: 582637313}
   - component: {fileID: 582637312}
   - component: {fileID: 582637314}
+  - component: {fileID: 582637315}
   m_Layer: 13
   m_Name: Goal
   m_TagString: Untagged
@@ -1314,6 +1315,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &582637315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582637311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3b31edf4580d04a91d78fbfd301a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &685283012
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,6 +1518,7 @@ GameObject:
   - component: {fileID: 963190244}
   - component: {fileID: 963190246}
   - component: {fileID: 963190245}
+  - component: {fileID: 963190247}
   m_Layer: 5
   m_Name: FrogsRemaining
   m_TagString: Untagged
@@ -1550,7 +1564,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Frogs: 0/'
+  m_text: 'Frogs:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1627,6 +1641,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963190243}
   m_CullTransparentMesh: 0
+--- !u!114 &963190247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963190243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27373a4c19a9b494c89daf5f22354008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1094335988
 GameObject:
   m_ObjectHideFlags: 0
@@ -6793,7 +6819,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30, y: -13.900024}
+  m_AnchoredPosition: {x: 34, y: -19}
   m_SizeDelta: {x: 812, y: 55}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2094028734
@@ -6815,7 +6841,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press 1 to select Spring, 2 to select Wall
+  m_text: Press 1 to select Spring, 2 to select Wall, R to restart
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6842,8 +6868,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6878,7 +6904,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -0.1884418, w: 0}
+  m_margin: {x: 0, y: 0, z: -44.516403, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6902,12 +6928,12 @@ PrefabInstance:
     - target: {fileID: 4994300193609078432, guid: 7bdc0e8afc7b6e746a6556d9d95353cb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4994300193609078432, guid: 7bdc0e8afc7b6e746a6556d9d95353cb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4994300193609078432, guid: 7bdc0e8afc7b6e746a6556d9d95353cb,
         type: 3}
@@ -6958,6 +6984,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Start
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994300193609078439, guid: 7bdc0e8afc7b6e746a6556d9d95353cb,
+        type: 3}
+      propertyPath: setAmountOfFrogs
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bdc0e8afc7b6e746a6556d9d95353cb, type: 3}
