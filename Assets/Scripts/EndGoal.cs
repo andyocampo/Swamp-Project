@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EndGoal : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -16,7 +15,7 @@ public class EndGoal : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "frog")
         {
