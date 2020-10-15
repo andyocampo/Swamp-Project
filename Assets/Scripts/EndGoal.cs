@@ -14,7 +14,6 @@ public class EndGoal : MonoBehaviour
     void Update()
     {
         frogsRemainingText = $"Frogs: {frogGoal}/{FrogSpawner.amountOfFrogs}";
-        Debug.Log(frogGoal);
     }
 
     //observer pattern that tells frog remaining UI how many frogs left
