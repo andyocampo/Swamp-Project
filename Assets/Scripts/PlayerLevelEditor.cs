@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,7 +16,9 @@ public class PlayerLevelEditor : MonoBehaviour
     private int currentTile;//current tile chosen
 
     [SerializeField] LayerMask allTilesLayer; //this is a layermask that dictates where the player can place a tile
-    [SerializeField] LayerMask placedTilesLayer; //this is a layermask that contatines only player placed tiles
+
+    //observer pattern that tells current tool UI what tool is chosen;
+    public static event Action<string> CurrentToolTriggered;
 
     private void Update()
     {
@@ -42,15 +45,16 @@ public class PlayerLevelEditor : MonoBehaviour
         }
     }
 
-    //Removes tiles where cursor is located and player has placed a tile
+    //Removes tiles where cursor is located and player has placed a tile 
+    //(MAY BE REMOVED TO ADD DIFFICULTY, PLAYER WOULD HAVE TO RESTART IF THEY MAKE MISTAKE)
     private void RemoveTile()
     {
         if (Input.GetMouseButtonDown(1))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D rayHit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, placedTilesLayer);
+            RaycastHit2D rayHit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
 
-            if (rayHit.collider != null) //checks whether cursor is over an already placed tile (includes ground, walls, player spawned tiles and foreground items)
+            if ((rayHit.collider != null) && rayHit.transform.tag == "PlacedTiles") //checks whether cursor is over an already placed tile (includes ground, walls, player spawned tiles and foreground items)
             {
                 Destroy(rayHit.transform.gameObject);
             }
@@ -73,13 +77,24 @@ public class PlayerLevelEditor : MonoBehaviour
 
     private void ChangeTile() //changes the tile currently being used
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        string chosenTool;
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             currentTile = 0;
+            if (CurrentToolTriggered != null)
+            {
+                chosenTool = "Current Tool: Spring";
+                CurrentToolTriggered.Invoke(chosenTool);
+            }
         }
         else if(Input.GetKeyDown(KeyCode.Alpha2))
         {
             currentTile = 1;
+            if (CurrentToolTriggered != null)
+            {
+                chosenTool = "Current Tool: Wall";
+                CurrentToolTriggered.Invoke(chosenTool);
+            }
         }
     }
 

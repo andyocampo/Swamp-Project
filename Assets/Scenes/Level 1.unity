@@ -1156,6 +1156,7 @@ GameObject:
   - component: {fileID: 900197524}
   - component: {fileID: 900197526}
   - component: {fileID: 900197525}
+  - component: {fileID: 900197527}
   m_Layer: 5
   m_Name: CurrentTool
   m_TagString: Untagged
@@ -1278,6 +1279,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900197523}
   m_CullTransparentMesh: 0
+--- !u!114 &900197527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900197523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988bcdc98b965e747b118e07f846697a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963190243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1461,9 +1474,6 @@ MonoBehaviour:
   allTilesLayer:
     serializedVersion: 2
     m_Bits: 11776
-  placedTilesLayer:
-    serializedVersion: 2
-    m_Bits: 8192
 --- !u!4 &1094335990
 Transform:
   m_ObjectHideFlags: 0
