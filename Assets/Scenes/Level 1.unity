@@ -1194,6 +1194,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &764809551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 764809552}
+  - component: {fileID: 764809554}
+  - component: {fileID: 764809553}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &764809552
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764809551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1392833142}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 155}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &764809553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764809551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 0.74509805}
+  m_RaycastTarget: 0
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 5
+--- !u!222 &764809554
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764809551}
+  m_CullTransparentMesh: 0
 --- !u!1 &900197523
 GameObject:
   m_ObjectHideFlags: 0
@@ -5178,6 +5252,7 @@ RectTransform:
   - {fileID: 2094028733}
   - {fileID: 900197524}
   - {fileID: 963190244}
+  - {fileID: 764809552}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6570,30 +6645,6 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1873782985}
     m_ColliderPaths:
-    - - X: 0
-        Y: 59999900
-      - X: 41
-        Y: 59999900
-      - X: 100
-        Y: 59999959
-      - X: 100
-        Y: 70000041
-      - X: 41
-        Y: 70000100
-      - X: -10000041
-        Y: 70000100
-      - X: -10000100
-        Y: 70000041
-      - X: -10000100
-        Y: 59999959
-      - X: -10000041
-        Y: 59999900
-      - X: -10000000
-        Y: 59999900
-      - X: -10000000
-        Y: 30000000
-      - X: 0
-        Y: 30000000
     - - X: -120000000
         Y: 70000000
       - X: -130000000
@@ -6602,6 +6653,14 @@ CompositeCollider2D:
         Y: -40000000
       - X: -120000000
         Y: -40000000
+    - - X: 0
+        Y: 70000000
+      - X: -10000000
+        Y: 70000000
+      - X: -10000000
+        Y: 30000000
+      - X: 0
+        Y: 30000000
     - - X: 130000000
         Y: 70000000
       - X: 120000000
@@ -6612,14 +6671,14 @@ CompositeCollider2D:
         Y: -40000000
   m_CompositePaths:
     m_Paths:
-    - - {x: -0.000029300001, y: 3}
-      - {x: -0.0000252, y: 7.0000095}
-      - {x: -1.00001, y: 6.9999743}
-      - {x: -0.99997073, y: 3}
     - - {x: 12.99997, y: -4}
       - {x: 12.99997, y: 7}
       - {x: 12, y: 6.9999704}
       - {x: 12.00003, y: -4}
+    - - {x: -0.000029300001, y: 3}
+      - {x: -0.000029300001, y: 7}
+      - {x: -1, y: 6.9999704}
+      - {x: -0.99997073, y: 3}
     - - {x: -12.00003, y: -4}
       - {x: -12.00003, y: 7}
       - {x: -13, y: 6.9999704}
