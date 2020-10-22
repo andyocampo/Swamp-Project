@@ -27,7 +27,6 @@ public class PlayerLevelEditor : MonoBehaviour
         PlaceTile();
         RemoveTile();
         ChangeTile();
-        Restart();
     }
 
     //Places tile where cursor is located and stores it in player spawned tiles gameobject
@@ -95,14 +94,6 @@ public class PlayerLevelEditor : MonoBehaviour
                 chosenTool = "Current Tool: Wall";
                 CurrentToolTriggered.Invoke(chosenTool);
             }
-        }
-    }
-
-    private void Restart() //restarts scene
-    {
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(0);
         }
     }
 }
