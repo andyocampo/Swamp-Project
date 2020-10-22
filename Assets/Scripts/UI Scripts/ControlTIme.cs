@@ -8,6 +8,7 @@ public class ControlTIme : MonoBehaviour
     public void PlayOnClick()
     {
         Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f;
     }
 
     public void PauseOnClick()
@@ -18,6 +19,7 @@ public class ControlTIme : MonoBehaviour
     public void SlowOnClick()
     {
         Time.timeScale = 0.5f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 
     public void FastOnClick()
