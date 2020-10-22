@@ -27,7 +27,7 @@ public class FrogMovement : MonoBehaviour
 
     void Update()
     {
-        if(!HasJumped)
+        if (!HasJumped)
         {
             StartCoroutine(FrogJump());
         }
@@ -39,7 +39,7 @@ public class FrogMovement : MonoBehaviour
     IEnumerator FrogJump()
     {
         HasJumped = true;
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSeconds(3f);
         rB.AddForce(leapArc, ForceMode2D.Impulse);
         HasJumped = false;
     }

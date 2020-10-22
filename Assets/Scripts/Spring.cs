@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spring : MonoBehaviour
 {
-    private float springForce = 3f;
+    private float springForce = 1.5f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

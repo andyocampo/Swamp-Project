@@ -13,15 +13,20 @@ public class FrogSpawner : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 0;
         amountOfFrogs = setAmountOfFrogs;
     }
 
     private void Update()
     {
-        if (frogSpawned < amountOfFrogs) //checks if frogs spawned 
+        if(Time.timeScale > 0)
         {
-            StartCoroutine(SpawnFrog());
+            if (frogSpawned < amountOfFrogs) //checks if frogs spawned 
+            {
+                StartCoroutine(SpawnFrog());
+            }
         }
+
     }
 
     IEnumerator SpawnFrog() //spawns a frog every four seconds
