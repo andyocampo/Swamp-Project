@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,16 +16,12 @@ public class PlayerLevelEditor : MonoBehaviour
 
     [SerializeField] LayerMask allTilesLayer; //this is a layermask that dictates where the player can place a tile
 
-    //observer pattern that tells current tool UI what tool is chosen;
-    public static event Action<string> CurrentToolTriggered;
-
     private void Update()
     {
         CalculatePosition();
         ChangeCursorPosition();
         PlaceTile();
         RemoveTile();
-        ChangeTile();
     }
 
     //Places tile where cursor is located and stores it in player spawned tiles gameobject
@@ -74,26 +69,19 @@ public class PlayerLevelEditor : MonoBehaviour
         cursor.transform.position = tilePosition;
     }
 
-    private void ChangeTile() //changes the tile currently being used
+    //Takes event from UI Handler script to change chosen tile
+    private void OnCurrentToolTriggered(int TileNumber) 
     {
-        string chosenTool;
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            currentTile = 0;
-            if (CurrentToolTriggered != null)
-            {
-                chosenTool = "Current Tool: Spring";
-                CurrentToolTriggered.Invoke(chosenTool);
-            }
-        }
-        else if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            currentTile = 1;
-            if (CurrentToolTriggered != null)
-            {
-                chosenTool = "Current Tool: Wall";
-                CurrentToolTriggered.Invoke(chosenTool);
-            }
-        }
+        currentTile = TileNumber;
+    }
+
+    private void OnEnable()
+    {
+        UIHandler.CurrentToolTriggered += OnCurrentToolTriggered;
+    }
+
+    private void OnDisable()
+    {
+        UIHandler.CurrentToolTriggered -= OnCurrentToolTriggered;
     }
 }
