@@ -9,6 +9,12 @@ public class EndGoal : MonoBehaviour
 
     private string frogsRemainingText;
     private int frogGoal = 1;
+    private ParticleSystem goalParticles;
+
+    private void Start()
+    {
+        goalParticles = GetComponentInChildren<ParticleSystem>();
+    }
 
 
     void Update()
@@ -23,6 +29,7 @@ public class EndGoal : MonoBehaviour
     {
         if(other.gameObject.tag == "Frog")
         {
+            goalParticles.Play(); //launches confetti
             Destroy(other.gameObject); //destroys frog
             frogGoal++;
 
