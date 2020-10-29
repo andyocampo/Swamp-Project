@@ -8,24 +8,24 @@ public class EndGoal : MonoBehaviour
 {
 
     private string frogsRemainingText;
-    private int frogGoal = 1;
-    private ParticleSystem goalParticles;
+    private int frogGoal = 0;
+    private int frogAmount = 0; //amount of frogs in level
+    public int FrogGoal 
+    {
+            get { return frogGoal; }
+    }
+
+    private ParticleSystem goalParticles; //confetti particle system
+
+    //observer pattern that tells frog remaining UI how many frogs left
+    public static event Action<string> FrogReachesGoalTriggered;
 
     private void Start()
     {
+        frogAmount = FrogSpawner.amountOfFrogs;
         goalParticles = GetComponentInChildren<ParticleSystem>();
+        frogsRemainingText = $"Frogs: {frogGoal}/{frogAmount}";
     }
-
-
-    void Update()
-    {
-        frogsRemainingText = $"Frogs: {frogGoal}/{FrogSpawner.amountOfFrogs}";
-    }
-
-    //observer pattern that tells frog remaining UI how many frogs left
-    public static event Action<string> FrogReachesGoalTriggered; 
-
-    public static event Action<string> WinLoseTriggered; 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -35,11 +35,7 @@ public class EndGoal : MonoBehaviour
             Destroy(other.gameObject); //destroys frog
             frogGoal++;
 
-            if (frogGoal == FrogSpawner.amountOfFrogs + 1)
-            {
-                string WinText;
-                WinText = "You Win!";
-            }
+            frogsRemainingText = $"Frogs: {frogGoal}/{frogAmount}";
 
             if (FrogReachesGoalTriggered != null)
             {
