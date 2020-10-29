@@ -12,7 +12,7 @@ public class WinLoseHandler : MonoBehaviour
     private int dead;
 
 
-    public static event Action<string, int> WinLoseTriggered;
+    public static event Action<string> WinLoseTriggered;
 
     void Update()
     {
@@ -20,25 +20,23 @@ public class WinLoseHandler : MonoBehaviour
         dead = hazards.GetComponent<Hazard>().FrogsDead;
 
         string WinText;
-        int setActive;
 
         if (alive >= FrogSpawner.amountOfFrogs) //bad way of checking win
         {
             WinText = "You Win!";
-            setActive = 1;
             if (WinLoseTriggered != null)
             {
-                WinLoseTriggered.Invoke(WinText, setActive);
+                WinLoseTriggered.Invoke(WinText);
             }
         }
         else if (dead >= FrogSpawner.amountOfFrogs)
         {
             WinText = "You Lose";
-            setActive = 1;
             if (WinLoseTriggered != null)
             {
-                WinLoseTriggered.Invoke(WinText, setActive);
+                WinLoseTriggered.Invoke(WinText);
             }
+            Time.timeScale = 0;
         }
     }
 }

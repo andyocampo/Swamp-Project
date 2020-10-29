@@ -17,11 +17,18 @@ public class WinLoseController : MonoBehaviour
         messageText.text = text;
     }
 
-    private void OnWinLoseTriggered(string text, int active)
+    public void OpenPanel()
     {
-        var canvas = gameObject.GetComponent<CanvasGroup>();
+        Animator animator = gameObject.GetComponent<Animator>();
+        bool isOpen = animator.GetBool("is Open");
+
+        animator.SetBool("is Open", !isOpen);
+    }
+
+    private void OnWinLoseTriggered(string text)
+    {
         UpdateUI(text);
-        canvas.alpha = active;
+        OpenPanel();
     }
 
     private void OnEnable()
