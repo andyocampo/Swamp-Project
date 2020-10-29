@@ -22,8 +22,7 @@ public class WinLoseHandler : MonoBehaviour
         string WinText;
         int setActive;
 
-        //frogGoal == FrogSpawner.amountOfFrogs
-        if (alive >= FrogSpawner.amountOfFrogs) //bad way of checking win
+=        if (alive >= FrogSpawner.amountOfFrogs) //bad way of checking win
         {
             WinText = "You Win!";
             setActive = 1;
