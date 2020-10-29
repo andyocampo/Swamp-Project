@@ -25,6 +25,8 @@ public class EndGoal : MonoBehaviour
     //observer pattern that tells frog remaining UI how many frogs left
     public static event Action<string> FrogReachesGoalTriggered; 
 
+    public static event Action<string> WinLoseTriggered; 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "Frog")
@@ -35,7 +37,8 @@ public class EndGoal : MonoBehaviour
 
             if (frogGoal == FrogSpawner.amountOfFrogs + 1)
             {
-                frogsRemainingText = "You Win!";
+                string WinText;
+                WinText = "You Win!";
             }
 
             if (FrogReachesGoalTriggered != null)
