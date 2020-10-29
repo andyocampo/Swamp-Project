@@ -7,8 +7,8 @@ public class FrogSpawner : MonoBehaviour
     [SerializeField]
     GameObject frog;
 
-    public int setAmountOfFrogs;
-    public static int amountOfFrogs;
+    [SerializeField] int setAmountOfFrogs;
+    public static int amountOfFrogs; //ugly code, but eventually will probably be added to singleton
     private int frogSpawned = 0;
 
     private void Awake()
