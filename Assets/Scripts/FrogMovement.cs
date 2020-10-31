@@ -25,7 +25,7 @@ public class FrogMovement : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         if (!HasJumped)
         {
