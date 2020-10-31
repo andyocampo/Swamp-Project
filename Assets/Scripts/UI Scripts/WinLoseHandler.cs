@@ -21,15 +21,7 @@ public class WinLoseHandler : MonoBehaviour
 
         string WinText;
 
-        if (alive >= FrogSpawner.amountOfFrogs) //bad way of checking win
-        {
-            WinText = "You Win!";
-            if (WinLoseTriggered != null)
-            {
-                WinLoseTriggered.Invoke(WinText);
-            }
-        }
-        else if (dead >= FrogSpawner.amountOfFrogs)
+        if (dead >= FrogSpawner.amountOfFrogs)
         {
             WinText = "You Lose";
             if (WinLoseTriggered != null)
@@ -37,6 +29,14 @@ public class WinLoseHandler : MonoBehaviour
                 WinLoseTriggered.Invoke(WinText);
             }
             Time.timeScale = 0;
+        }
+        else if (alive >= FrogSpawner.amountOfFrogs) //bad way of checking win
+        {
+            WinText = "You Win!";
+            if (WinLoseTriggered != null)
+            {
+                WinLoseTriggered.Invoke(WinText);
+            }
         }
     }
 }
