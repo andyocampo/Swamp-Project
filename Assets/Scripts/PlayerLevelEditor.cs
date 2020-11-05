@@ -13,6 +13,7 @@ public class PlayerLevelEditor : MonoBehaviour
     [SerializeField] GameObject playerSpawnedTiles;
 
     private int currentTile;//current tile chosen
+    SpriteRenderer currentTileSprite;
 
     [SerializeField] LayerMask allTilesLayer; //this is a layermask that dictates where the player can place a tile
 
@@ -20,42 +21,67 @@ public class PlayerLevelEditor : MonoBehaviour
     {
         CalculatePosition();
         ChangeCursorPosition();
+        ChangeTileSprite();
         PlaceTile();
         RemoveTile();
     }
 
-    //Places tile where cursor is located and stores it in player spawned tiles gameobject
+    /// <summary>
+    /// Places tile where cursor is located and stores it in player spawned tiles gameobject
+    /// </summary>
     private void PlaceTile()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D rayHit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, allTilesLayer);
+        Color cursorColor = cursor.GetComponent<SpriteRenderer>().color; //cursor's opacity
+        Color tileColor = currentTileSprite.GetComponent<SpriteRenderer>().color; //cursor's opacity
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit2D rayHit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, allTilesLayer);
 
-            if(rayHit.collider == null) //checks whether cursor is over an already placed tile (includes ground, walls, player spawned tiles and foreground items)
+        if (rayHit.collider != null)//checks whether cursor is over an already placed tile (includes ground, walls, player spawned tiles and foreground items)
+        {
+            tileColor = new Color(1, 0, 0, 0.5f);
+            cursorColor.a = 0.5f;
+            cursor.GetComponent<SpriteRenderer>().color = cursorColor;
+            currentTileSprite.GetComponent<SpriteRenderer>().color = tileColor;
+        }
+        else //checks whether cursor is in available spot
+        {
+            tileColor = new Color(1, 1, 1, 1);
+            cursorColor.a = 1;
+            cursor.GetComponent<SpriteRenderer>().color = cursorColor;
+            currentTileSprite.GetComponent<SpriteRenderer>().color = tileColor;
+
+            if(Input.GetMouseButtonDown(0))
             {
                 GameObject spawnedTile = Instantiate(tile[currentTile], tilePosition, Quaternion.identity, playerSpawnedTiles.transform);
             }
         }
     }
 
-    //Removes tiles where cursor is located and player has placed a tile 
     //(MAY BE REMOVED TO ADD DIFFICULTY, PLAYER WOULD HAVE TO RESTART IF THEY MAKE MISTAKE)
+    /// <summary>
+    /// Removes tiles where cursor is located and player has placed a tile
+    /// </summary>
     private void RemoveTile()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D rayHit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
+        Sprite deleteTile = this.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit2D rayHit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
 
-            if ((rayHit.collider != null) && rayHit.transform.tag == "PlacedTiles") //checks whether cursor is over an already placed tile (includes ground, walls, player spawned tiles and foreground items)
+        if ((rayHit.collider != null) && rayHit.transform.tag == "PlacedTiles") //checks whether cursor is over an already placed tile
+        { 
+            currentTileSprite.GetComponent<SpriteRenderer>().sprite = deleteTile;
+
+            if (Input.GetMouseButtonDown(1))
             {
                 Destroy(rayHit.transform.gameObject);
             }
         }
+
     }
 
-    // Calcutates where the tile will be placed in a grid
+    /// <summary>
+    /// Calcutates where the tile will be placed in a grid
+    /// </summary>
     private void CalculatePosition()
     {
         cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -63,13 +89,25 @@ public class PlayerLevelEditor : MonoBehaviour
         
     }
 
-    //Moves player cursor around grid to indicate to player where tile will be placed
+    /// <summary>
+    /// Moves player cursor around grid to indicate to player where tile will be placed
+    /// </summary>
     private void ChangeCursorPosition()
     {
         cursor.transform.position = tilePosition;
     }
 
-    //Takes event from UI Handler script to change chosen tile
+    private void ChangeTileSprite()
+    {
+        currentTileSprite = cursor.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+        currentTileSprite.sprite = tile[currentTile].GetComponent<SpriteRenderer>().sprite;
+    }
+
+
+    /// <summary>
+    /// Takes event from UI Handler script to change chosen tile
+    /// </summary>
+    /// <param name="TileNumber">Index for tiles array</param>
     private void OnCurrentToolTriggered(int TileNumber) 
     {
         currentTile = TileNumber;
