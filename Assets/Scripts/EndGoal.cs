@@ -8,11 +8,11 @@ public class EndGoal : MonoBehaviour
 {
 
     private string frogsRemainingText;
-    private int frogGoal = 0;
-    private int frogAmount = 0; //amount of frogs in level
+    private int frogsWhoReachedGoal = 0; //frogs that have crossed the goal
+    private int frogAmount; //amount of frogs in level
     public int FrogGoal 
     {
-            get { return frogGoal; }
+            get { return frogsWhoReachedGoal; }
     }
 
     private ParticleSystem goalParticles; //confetti particle system
@@ -24,18 +24,18 @@ public class EndGoal : MonoBehaviour
     {
         frogAmount = FrogSpawner.amountOfFrogs;
         goalParticles = GetComponentInChildren<ParticleSystem>();
-        frogsRemainingText = $"Frogs: {frogGoal}/{frogAmount}";
+        frogsRemainingText = $"Frogs: {frogsWhoReachedGoal}/{frogAmount}";
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Frog")
+        if(other.gameObject.CompareTag("Frog"))
         {
             goalParticles.Play(); //launches confetti
             Destroy(other.gameObject); //destroys frog
-            frogGoal++;
+            frogsWhoReachedGoal++;
 
-            frogsRemainingText = $"Frogs: {frogGoal}/{frogAmount}";
+            frogsRemainingText = $"Frogs: {frogsWhoReachedGoal}/{frogAmount}";
 
             if (FrogReachesGoalTriggered != null)
             {

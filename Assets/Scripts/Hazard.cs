@@ -12,7 +12,7 @@ public class Hazard : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Frog")
+        if (other.gameObject.CompareTag("Frog"))
         {
             Destroy(other.gameObject);
             frogsDead++;

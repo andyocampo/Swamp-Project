@@ -9,7 +9,7 @@ public class Spring : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Frog")
+        if (other.gameObject.CompareTag("Frog"))
         {
             if(other.transform.eulerAngles.y == 180)
             {
