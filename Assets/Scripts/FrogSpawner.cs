@@ -35,7 +35,16 @@ public class FrogSpawner : MonoBehaviour
         yield return new WaitForSeconds(3.5f);
         GameObject newFrog = Instantiate<GameObject>(frog, this.transform.position, Quaternion.identity);
         newFrog.GetComponent<SpriteRenderer>().material.color = new Color32(0, greenValue, 0, 255); //changes frog color
+        FrogSpawnAnimation(newFrog);
         frogSpawned++;
         StopAllCoroutines();
+    }
+
+    private void FrogSpawnAnimation(GameObject frog)
+    {
+        Animator animator = frog.GetComponent<Animator>();
+        bool isSpawned = animator.GetBool("is Spawned");
+
+        animator.SetBool("is Spawned", !isSpawned);
     }
 }
