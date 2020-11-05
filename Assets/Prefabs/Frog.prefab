@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 7086980388376563942}
   - component: {fileID: 7086980388376563940}
   - component: {fileID: 7086980388376563941}
+  - component: {fileID: 9032049070260828773}
   m_Layer: 8
   m_Name: Frog
   m_TagString: Frog
@@ -235,3 +236,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leapForce: 2
   wallDetection: {fileID: 7086980387821838411}
+--- !u!95 &9032049070260828773
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7086980388376563961}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7624249cebb9fe9438bac7e3a0297ff2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
