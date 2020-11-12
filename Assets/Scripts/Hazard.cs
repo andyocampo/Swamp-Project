@@ -17,7 +17,6 @@ public class Hazard : MonoBehaviour
             Destroy(other.gameObject);
             frogsDead++;
             FrogSpawner.amountOfFrogs--;
-            Debug.Log(frogsDead);
         }
     }
 }
