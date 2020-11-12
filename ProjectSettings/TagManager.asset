@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - PlacedTiles
   - Frog
+  - Enemy
+  - Hazard
   layers:
   - Default
   - TransparentFX
