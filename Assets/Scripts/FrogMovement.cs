@@ -15,7 +15,8 @@ public class FrogMovement : MonoBehaviour
     Vector2 rayDirection;
     Rigidbody2D rB;
 
-    public Transform wallDetection;
+    [SerializeField]
+    Transform wallDetection;
 
     void Start()
     {
