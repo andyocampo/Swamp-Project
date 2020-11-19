@@ -14,10 +14,21 @@ public class PlayerLevelEditor : MonoBehaviour
 
     public int[] tilesRemaining; //how many tiles remain for each tile/tool
     private int currentTile; //current tile chosen
+    Color cursorColor; 
 
-        SpriteRenderer currentTileSprite;
+    SpriteRenderer currentTileSpriteRenderer;
+    SpriteRenderer cursorSpriteRenderer;
+    SpriteRenderer InvalidToolSpriteRenderer;
 
     [SerializeField] LayerMask allTilesLayer; //this is a layermask that dictates where the player can place a tile
+
+    private void Start()
+    {
+        InvalidToolSpriteRenderer = cursor.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();//sprite that appears if the player is out of toolsor 
+        currentTileSpriteRenderer = cursor.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>();//gets the sprite renderer of the current tool
+        cursorSpriteRenderer = cursor.GetComponent<SpriteRenderer>();//cursor's sprite renderer
+        cursorColor = cursor.GetComponent<SpriteRenderer>().color; //cursor's opacity/color
+    }
 
     private void Update()
     {
@@ -33,37 +44,45 @@ public class PlayerLevelEditor : MonoBehaviour
     /// </summary>
     private void PlaceTile()
     {
-        Color cursorColor = cursor.GetComponent<SpriteRenderer>().color; //cursor's opacity
-        Color tileColor; //cursor's opacity
+        Color invalidColor; //invalid sprites opacity/color
+        Color tileColor; //current tile's opacity/color
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D rayHit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, allTilesLayer);
+         
 
         if (rayHit.collider != null)//checks whether cursor is over an already placed tile (includes ground, walls, player spawned tiles and foreground items)
         {
+            invalidColor = new Color(1, 1, 1, 1);
             tileColor = new Color(1, 0, 0, 0.5f);
             cursorColor.a = 0.5f;
-            cursor.GetComponent<SpriteRenderer>().color = cursorColor;
-            currentTileSprite.GetComponent<SpriteRenderer>().color = tileColor;
+            cursorSpriteRenderer.color = cursorColor;
+            currentTileSpriteRenderer.color = tileColor;
+            InvalidToolSpriteRenderer.color = invalidColor;
         }
         else //checks whether cursor is in available spot
         {
+            invalidColor = new Color(0, 0, 0, 0);
             tileColor = new Color(1, 1, 1, 1);
             cursorColor.a = 1;
-            cursor.GetComponent<SpriteRenderer>().color = cursorColor;
-            currentTileSprite.GetComponent<SpriteRenderer>().color = tileColor;
+            cursorSpriteRenderer.color = cursorColor;
+            currentTileSpriteRenderer.color = tileColor;
+            InvalidToolSpriteRenderer.color = invalidColor;
 
             if (tilesRemaining[currentTile] > 0)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0))//places tile
                 {
                     tilesRemaining[currentTile]--;
                     Instantiate(tile[currentTile], tilePosition, Quaternion.identity, playerSpawnedTiles.transform);
                 }
             }
-            else if (tilesRemaining[currentTile] < 0)
+            else if (tilesRemaining[currentTile] <= 0)//when the player is out of tools.
             {
-                tileColor.a = 0;
-                currentTileSprite.GetComponent<SpriteRenderer>().color = tileColor;
+                invalidColor = new Color(1, 1, 1, 1);
+                tileColor = new Color(1, 0, 0, 0.5f);
+                cursorColor.a = 0.5f;
+                currentTileSpriteRenderer.color = tileColor;
+                InvalidToolSpriteRenderer.color = invalidColor;
             }
         }
     }
@@ -75,14 +94,12 @@ public class PlayerLevelEditor : MonoBehaviour
     private void RemoveTile()
     {
         string nameOfCurrentTile = $"{tile[currentTile].name}(Clone)";
-        Sprite deleteTile = this.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D rayHit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
 
         if ((rayHit.collider != null) && rayHit.transform.CompareTag("PlacedTiles")) //checks whether cursor is over an already placed tile
         { 
-            currentTileSprite.GetComponent<SpriteRenderer>().sprite = deleteTile;
-
+            //TODO: Delete Sprite goes here
             if (Input.GetMouseButtonDown(1))
             {
                 if(rayHit.transform.name != nameOfCurrentTile)
@@ -127,8 +144,7 @@ public class PlayerLevelEditor : MonoBehaviour
 
     private void ChangeTileSprite()
     {
-        currentTileSprite = cursor.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
-        currentTileSprite.sprite = tile[currentTile].GetComponent<SpriteRenderer>().sprite;
+        currentTileSpriteRenderer.sprite = tile[currentTile].GetComponent<SpriteRenderer>().sprite;
     }
 
 
