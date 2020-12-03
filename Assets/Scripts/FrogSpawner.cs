@@ -11,10 +11,10 @@ public class FrogSpawner : MonoBehaviour
     public static int amountOfFrogs; //ugly code, but eventually will probably be added to singleton
     private int frogSpawned = 0;
 
-    private void Start()
+    private void Awake()
     {
-        Time.timeScale = 0;
         amountOfFrogs = setAmountOfFrogs;
+        Time.timeScale = 0;
     }
 
     private void Update()
