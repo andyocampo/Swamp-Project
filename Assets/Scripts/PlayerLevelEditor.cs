@@ -13,7 +13,7 @@ public class PlayerLevelEditor : MonoBehaviour
     private int currentTile; //current tile chosen
 
     [SerializeField] GameObject[] tile;
-    [SerializeField] GameObject cursor;
+    [SerializeField] GameObject cursor = null;
     [SerializeField] GameObject playerSpawnedTiles;
 
     SpriteRenderer currentTileSpriteRenderer;
@@ -26,7 +26,7 @@ public class PlayerLevelEditor : MonoBehaviour
 
     [SerializeField] LayerMask allTilesLayer; //this is a layermask that dictates where the player can place a tile
 
-    private void Start()
+    private void Awake()
     {
         deleteModeOn = false;
         invalidToolSpriteRenderer = cursor.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();//sprite that appears if the player is out of toolsor 

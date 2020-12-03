@@ -11,10 +11,12 @@ public class UIHandler : MonoBehaviour
     //observer pattern that tells current tool UI what tool is chosen;
     public static event Action<int> CurrentToolTriggered;
     public static bool deleteOn;
+    [SerializeField] Toggle deleteModeToggle;
 
     private void Start()
     {
         deleteOn = false;
+        deleteModeToggle.GetComponent<Toggle>();
     }
 
     //opens and closes UI panel
@@ -80,7 +82,8 @@ public class UIHandler : MonoBehaviour
     {
         if (CurrentToolTriggered != null)
         {
-            deleteOn = false;
+            deleteOffImage.enabled = true;
+            deleteModeToggle.isOn = false;
             CurrentToolTriggered.Invoke(0);
         }
     }
@@ -91,6 +94,8 @@ public class UIHandler : MonoBehaviour
         if (CurrentToolTriggered != null)
         {
             deleteOn = false;
+            deleteOffImage.enabled = true;
+            deleteModeToggle.isOn = false;
             CurrentToolTriggered.Invoke(1);
         }
     }

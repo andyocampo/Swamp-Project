@@ -1620,6 +1620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5987725afe11c99409f766208ceceafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deleteModeToggle: {fileID: 2212480411096260057}
   deleteOffImage: {fileID: 2212480412392713877}
 --- !u!114 &2212480411517454351
 MonoBehaviour:

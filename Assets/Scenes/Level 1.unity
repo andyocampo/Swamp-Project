@@ -6106,6 +6106,11 @@ PrefabInstance:
       propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2212480411096260057, guid: 825882e934faedd43bb5bbd7f3c90bb8,
+        type: 3}
+      propertyPath: m_IsOn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2212480411224828713, guid: 825882e934faedd43bb5bbd7f3c90bb8,
         type: 3}
       propertyPath: m_Name
@@ -6240,6 +6245,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSizeBase
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2212480411927513861, guid: 825882e934faedd43bb5bbd7f3c90bb8,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5660378
+      objectReference: {fileID: 0}
+    - target: {fileID: 2212480411927513861, guid: 825882e934faedd43bb5bbd7f3c90bb8,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5660378
+      objectReference: {fileID: 0}
+    - target: {fileID: 2212480411927513861, guid: 825882e934faedd43bb5bbd7f3c90bb8,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5660378
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 825882e934faedd43bb5bbd7f3c90bb8, type: 3}
