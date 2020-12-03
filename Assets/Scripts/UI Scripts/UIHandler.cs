@@ -93,7 +93,6 @@ public class UIHandler : MonoBehaviour
     {
         if (CurrentToolTriggered != null)
         {
-            deleteOn = false;
             deleteOffImage.enabled = true;
             deleteModeToggle.isOn = false;
             CurrentToolTriggered.Invoke(1);
