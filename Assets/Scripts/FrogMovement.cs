@@ -9,11 +9,12 @@ public class FrogMovement : MonoBehaviour
 
     float rayDistance = 100;    //distance of raycast wall detector
     bool IsFacingRight = true;  //is the frog facing right
-    bool HasJumped = false;     //has the frog jumped 
+    public bool HasJumped = false;     //has the frog jumped 
 
     Vector2 leapArc;
     Vector2 rayDirection;
     Rigidbody2D rB;
+    Animator animator;
 
     [SerializeField]
     Transform wallDetection;
@@ -23,6 +24,7 @@ public class FrogMovement : MonoBehaviour
         rB = GetComponent<Rigidbody2D>();
         leapArc = new Vector2(leapForce, leapForce);
         rayDirection = new Vector2(1, 0);
+        animator = GetComponent<Animator>();
     }
 
 
@@ -41,8 +43,20 @@ public class FrogMovement : MonoBehaviour
     {
         HasJumped = true;
         yield return new WaitForSeconds(3f);
+        FrogJumpAnimationStart();
         rB.AddForce(leapArc, ForceMode2D.Impulse);
         HasJumped = false;
+        yield return new WaitForSeconds(.5f);
+        FrogJumpAnimationStop();
+    }
+
+    private void FrogJumpAnimationStart()
+    {
+        animator.SetBool("has Jumped", true);
+    }    
+    private void FrogJumpAnimationStop()
+    {
+        animator.SetBool("has Jumped", false);
     }
 
     /// <summary>

@@ -11,7 +11,8 @@ public class Spring : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Frog"))
         {
-            if(other.transform.eulerAngles.y == 180)
+            StartCoroutine(AnimControls(other.gameObject));
+            if (other.transform.eulerAngles.y == 180)
             {
                 other.attachedRigidbody.AddForce(new Vector2(-springForce.x, springForce.y), ForceMode2D.Impulse);
             }
@@ -19,6 +20,29 @@ public class Spring : MonoBehaviour
             {
                 other.attachedRigidbody.AddForce(new Vector2(springForce.x, springForce.y), ForceMode2D.Impulse);
             }
+
         }
     }
+
+    IEnumerator AnimControls(GameObject frog)
+    {
+        FrogSpringJumpAnimationStart(frog);
+        yield return new WaitForSeconds(1.5f);
+        FrogSpringJumpAnimationStop(frog);
+    }
+
+    private void FrogSpringJumpAnimationStart(GameObject frog)
+    {
+        Animator animator = frog.GetComponent<Animator>();
+
+        animator.SetBool("has Jumped On Spring", true);
+    }
+
+    private void FrogSpringJumpAnimationStop(GameObject frog)
+    {
+        Animator animator = frog.GetComponent<Animator>();
+
+        animator.SetBool("has Jumped On Spring", false);
+    }
+
 }
