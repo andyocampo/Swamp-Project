@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class UIHandler : MonoBehaviour
@@ -9,6 +10,12 @@ public class UIHandler : MonoBehaviour
 
     //observer pattern that tells current tool UI what tool is chosen;
     public static event Action<int> CurrentToolTriggered;
+    public static bool deleteOn;
+
+    private void Start()
+    {
+        deleteOn = false;
+    }
 
     //opens and closes UI panel
     public void OpenPanel() 
@@ -22,7 +29,8 @@ public class UIHandler : MonoBehaviour
     //restarts level
     public void RestartOnClick() 
     {
-        SceneManager.LoadScene(0);
+        string currentLevel = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentLevel);
     }
 
     //starts game and sets time to normal
@@ -49,6 +57,15 @@ public class UIHandler : MonoBehaviour
     public void FastOnClick() 
     {
         Time.timeScale = 2;
+    }
+
+    [SerializeField] Image deleteOffImage;
+    //turns on/off the delete mode
+    public void DeleteModeOnClick()
+    {
+        bool spriteEnabled = !deleteOn;
+        deleteOn = !deleteOn;
+        deleteOffImage.enabled = !spriteEnabled; 
     }
 
     //sets current tool to spring
