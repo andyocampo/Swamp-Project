@@ -2763,7 +2763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5987725afe11c99409f766208ceceafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deleteModeToggle: {fileID: 0}
+  deleteModeToggle: {fileID: 2048683206}
   deleteOffImage: {fileID: 0}
 --- !u!114 &764809558
 MonoBehaviour:
@@ -10342,7 +10342,7 @@ PrefabInstance:
     - target: {fileID: 8749649300740915992, guid: 7c3060e757e75bf48b7c36ffbd92cbd8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 164
+      value: 254
       objectReference: {fileID: 0}
     - target: {fileID: 8749649300740915992, guid: 7c3060e757e75bf48b7c36ffbd92cbd8,
         type: 3}
@@ -10382,7 +10382,7 @@ PrefabInstance:
     - target: {fileID: 8749649300740915992, guid: 7c3060e757e75bf48b7c36ffbd92cbd8,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 8749649300740915999, guid: 7c3060e757e75bf48b7c36ffbd92cbd8,
         type: 3}
@@ -10461,7 +10461,7 @@ PrefabInstance:
     - target: {fileID: 8974130587180332816, guid: 4045dac0ebd43af4cb77539723ed9489,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 164
+      value: 254
       objectReference: {fileID: 0}
     - target: {fileID: 8974130587180332816, guid: 4045dac0ebd43af4cb77539723ed9489,
         type: 3}
@@ -10501,7 +10501,7 @@ PrefabInstance:
     - target: {fileID: 8974130587180332816, guid: 4045dac0ebd43af4cb77539723ed9489,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 8974130587180332819, guid: 4045dac0ebd43af4cb77539723ed9489,
         type: 3}
