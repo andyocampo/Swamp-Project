@@ -5,10 +5,9 @@ using UnityEngine;
 
 public class WinLoseController : MonoBehaviour
 {
-    private TMP_Text messageText;
+    [SerializeField] TMP_Text messageText;
     void Start()
     {
-        messageText = GetComponentInChildren<TMP_Text>();
         messageText.text = $"You Win";
     }
 

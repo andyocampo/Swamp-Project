@@ -11,7 +11,7 @@ public class FrogSpawner : MonoBehaviour
     public static int amountOfFrogs; //ugly code, but eventually will probably be added to singleton
     private int frogSpawned = 0;
 
-    private void Awake()
+    private void Start()
     {
         Time.timeScale = 0;
         amountOfFrogs = setAmountOfFrogs;
@@ -21,7 +21,7 @@ public class FrogSpawner : MonoBehaviour
     {
         if(Time.timeScale > 0)
         {
-            if (frogSpawned < amountOfFrogs) //checks if frogs spawned 
+            if (frogSpawned != setAmountOfFrogs) //checks if frogs spawned 
             {
                 StartCoroutine(SpawnFrog());
             }
