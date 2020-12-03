@@ -8,6 +8,7 @@ public class WinLoseController : MonoBehaviour
     [SerializeField] TMP_Text messageText;
     void Start()
     {
+        messageText.GetComponent<TMP_Text>();
         messageText.text = $"You Win";
     }
 

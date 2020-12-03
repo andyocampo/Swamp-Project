@@ -33,6 +33,13 @@ public class UIHandler : MonoBehaviour
         SceneManager.LoadScene(currentLevel);
     }
 
+    //changes level
+    public void NextLevel()
+    {
+        int nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextLevel);
+    }
+
     //starts game and sets time to normal
     public void PlayOnClick() 
     {
@@ -73,6 +80,7 @@ public class UIHandler : MonoBehaviour
     {
         if (CurrentToolTriggered != null)
         {
+            deleteOn = false;
             CurrentToolTriggered.Invoke(0);
         }
     }
@@ -82,6 +90,7 @@ public class UIHandler : MonoBehaviour
     {
         if (CurrentToolTriggered != null)
         {
+            deleteOn = false;
             CurrentToolTriggered.Invoke(1);
         }
     }
