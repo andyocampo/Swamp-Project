@@ -13,15 +13,15 @@ public class FrogSpawner : MonoBehaviour
 
     private void Awake()
     {
-        Time.timeScale = 0;
         amountOfFrogs = setAmountOfFrogs;
+        Time.timeScale = 0;
     }
 
     private void Update()
     {
         if(Time.timeScale > 0)
         {
-            if (frogSpawned < amountOfFrogs) //checks if frogs spawned 
+            if (frogSpawned != setAmountOfFrogs) //checks if frogs spawned 
             {
                 StartCoroutine(SpawnFrog());
             }

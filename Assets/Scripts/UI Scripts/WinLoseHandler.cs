@@ -72,6 +72,6 @@ public class WinLoseHandler : MonoBehaviour
                 WinLoseTriggered.Invoke(WinText);
             }
         }
-        Debug.Log(dead);
+        //Debug.Log(dead);
     }
 }

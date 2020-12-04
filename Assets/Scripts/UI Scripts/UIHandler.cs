@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class UIHandler : MonoBehaviour
@@ -9,6 +10,14 @@ public class UIHandler : MonoBehaviour
 
     //observer pattern that tells current tool UI what tool is chosen;
     public static event Action<int> CurrentToolTriggered;
+    public static bool deleteOn;
+    [SerializeField] Toggle deleteModeToggle;
+
+    private void Start()
+    {
+        deleteOn = false;
+        deleteModeToggle.GetComponent<Toggle>();
+    }
 
     //opens and closes UI panel
     public void OpenPanel() 
@@ -22,7 +31,15 @@ public class UIHandler : MonoBehaviour
     //restarts level
     public void RestartOnClick() 
     {
-        SceneManager.LoadScene(0);
+        string currentLevel = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentLevel);
+    }
+
+    //changes level
+    public void NextLevel()
+    {
+        int nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextLevel);
     }
 
     //starts game and sets time to normal
@@ -51,11 +68,22 @@ public class UIHandler : MonoBehaviour
         Time.timeScale = 2;
     }
 
+    [SerializeField] Image deleteOffImage;
+    //turns on/off the delete mode
+    public void DeleteModeOnClick()
+    {
+        bool spriteEnabled = !deleteOn;
+        deleteOn = !deleteOn;
+        deleteOffImage.enabled = !spriteEnabled; 
+    }
+
     //sets current tool to spring
     public void SpringOnClick()
     {
         if (CurrentToolTriggered != null)
         {
+            deleteOffImage.enabled = true;
+            deleteModeToggle.isOn = false;
             CurrentToolTriggered.Invoke(0);
         }
     }
@@ -65,6 +93,8 @@ public class UIHandler : MonoBehaviour
     {
         if (CurrentToolTriggered != null)
         {
+            deleteOffImage.enabled = true;
+            deleteModeToggle.isOn = false;
             CurrentToolTriggered.Invoke(1);
         }
     }
