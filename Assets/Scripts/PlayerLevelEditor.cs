@@ -10,7 +10,7 @@ public class PlayerLevelEditor : MonoBehaviour
 
     private bool deleteModeOn;
     public int[] tilesRemaining; //how many tiles remain for each tile/tool
-    private int currentTile; //current tile chosen
+    [SerializeField]private int currentTile; //current tile chosen
 
     [SerializeField] GameObject[] tile;
     [SerializeField] GameObject cursor = null;

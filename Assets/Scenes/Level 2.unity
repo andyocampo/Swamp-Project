@@ -6717,6 +6717,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4091571085694126185, guid: 3ab0d64435107c84e9e36d524c54bd71,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 25cfecf294068b742832416bd1c6f03a,
+        type: 3}
     - target: {fileID: 4091571085815864824, guid: 3ab0d64435107c84e9e36d524c54bd71,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6786,6 +6792,11 @@ PrefabInstance:
         type: 3}
       propertyPath: tilesRemaining.Array.data[0]
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091571085815864827, guid: 3ab0d64435107c84e9e36d524c54bd71,
+        type: 3}
+      propertyPath: currentTile
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ab0d64435107c84e9e36d524c54bd71, type: 3}
