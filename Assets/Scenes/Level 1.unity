@@ -4596,6 +4596,40 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1218052607
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2441758858852939292, guid: 9a0f90eb67c1d0542b31898af0d7deea,
+        type: 3}
+      propertyPath: m_Name
+      value: BackgroundMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441758858852939295, guid: 9a0f90eb67c1d0542b31898af0d7deea,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441758858852939295, guid: 9a0f90eb67c1d0542b31898af0d7deea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441758858852939295, guid: 9a0f90eb67c1d0542b31898af0d7deea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441758858852939295, guid: 9a0f90eb67c1d0542b31898af0d7deea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9a0f90eb67c1d0542b31898af0d7deea, type: 3}
 --- !u!114 &1392833143 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2212480411224828716, guid: 825882e934faedd43bb5bbd7f3c90bb8,
