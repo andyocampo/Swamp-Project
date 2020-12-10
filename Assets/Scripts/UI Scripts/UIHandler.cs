@@ -26,6 +26,7 @@ public class UIHandler : MonoBehaviour
         bool isOpen = animator.GetBool("is Open");
 
         animator.SetBool("is Open", !isOpen);
+        PlayOnClickSound(1.5f);
     }
 
     //restarts level
@@ -33,6 +34,7 @@ public class UIHandler : MonoBehaviour
     {
         string currentLevel = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentLevel);
+        PlayOnClickSound(1.5f);
     }
 
     //changes level
@@ -40,6 +42,7 @@ public class UIHandler : MonoBehaviour
     {
         int nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
         SceneManager.LoadScene(nextLevel);
+        PlayOnClickSound(1);
     }
 
     //starts game and sets time to normal
@@ -47,12 +50,14 @@ public class UIHandler : MonoBehaviour
     {
         Time.timeScale = 1;
         Time.fixedDeltaTime = 0.02f;
+        PlayOnClickSound(1);
     }
 
     //pauses game movement
     public void PauseOnClick() 
     {
         Time.timeScale = 0;
+        PlayOnClickSound(1);
     }
 
     //sets game to slow motion
@@ -60,12 +65,14 @@ public class UIHandler : MonoBehaviour
     {
         Time.timeScale = 0.5f;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        PlayOnClickSound(.5f);
     }
 
     //sets game to 2x the speed
     public void FastOnClick() 
     {
         Time.timeScale = 2;
+        PlayOnClickSound(2f);
     }
 
     [SerializeField] Image deleteOffImage;
@@ -74,7 +81,8 @@ public class UIHandler : MonoBehaviour
     {
         bool spriteEnabled = !deleteOn;
         deleteOn = !deleteOn;
-        deleteOffImage.enabled = !spriteEnabled; 
+        deleteOffImage.enabled = !spriteEnabled;
+        PlayOnClickSound(.5f);
     }
 
     //sets current tool to spring
@@ -86,6 +94,7 @@ public class UIHandler : MonoBehaviour
             deleteModeToggle.isOn = false;
             CurrentToolTriggered.Invoke(0);
         }
+        PlayOnClickSound(1.5f);
     }
 
     //sets current tool to wall
@@ -97,5 +106,12 @@ public class UIHandler : MonoBehaviour
             deleteModeToggle.isOn = false;
             CurrentToolTriggered.Invoke(1);
         }
+        PlayOnClickSound(1.5f);
+    }
+
+    private void PlayOnClickSound(float pitch)
+    {
+        SoundManager.Instance.ChangeOnClickPitch(pitch);
+        SoundManager.Instance.PlaySound(Clip.OnClick);
     }
 }

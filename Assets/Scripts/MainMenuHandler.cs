@@ -8,11 +8,13 @@ public class MainMenuHandler : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("Tutorial");
+        SoundManager.Instance.PlaySound(Clip.OnClick);
     }
 
     //exits game
     public void Exit()
     {
+        SoundManager.Instance.PlaySound(Clip.OnClick);
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_WEBPLAYER

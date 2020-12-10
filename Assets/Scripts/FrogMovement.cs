@@ -44,6 +44,7 @@ public class FrogMovement : MonoBehaviour
         HasJumped = true;
         yield return new WaitForSeconds(3f);
         FrogJumpAnimationStart();
+        SoundManager.Instance.PlaySound(Clip.FrogJump);
         rB.AddForce(leapArc, ForceMode2D.Impulse);
         HasJumped = false;
         yield return new WaitForSeconds(.5f);
