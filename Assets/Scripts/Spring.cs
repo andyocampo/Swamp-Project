@@ -28,7 +28,10 @@ public class Spring : MonoBehaviour
     {
         FrogSpringJumpAnimationStart(frog);
         yield return new WaitForSeconds(1.5f);
-        FrogSpringJumpAnimationStop(frog);
+        if (frog != null)
+        {
+            FrogSpringJumpAnimationStop(frog);
+        }
     }
 
     private void FrogSpringJumpAnimationStart(GameObject frog)
