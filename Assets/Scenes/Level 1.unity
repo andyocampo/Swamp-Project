@@ -6525,6 +6525,18 @@ PrefabInstance:
       propertyPath: m_text
       value: Get the frogs to the goal!
       objectReference: {fileID: 0}
+    - target: {fileID: 2212480411453799427, guid: 825882e934faedd43bb5bbd7f3c90bb8,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 52c9d138a8db65b4db3759781540c64c,
+        type: 2}
+    - target: {fileID: 2212480411453799427, guid: 825882e934faedd43bb5bbd7f3c90bb8,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -6902303924026330971, guid: 52c9d138a8db65b4db3759781540c64c,
+        type: 2}
     - target: {fileID: 2212480411760564024, guid: 825882e934faedd43bb5bbd7f3c90bb8,
         type: 3}
       propertyPath: m_fontSize
