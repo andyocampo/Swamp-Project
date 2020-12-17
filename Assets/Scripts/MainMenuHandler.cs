@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuHandler : MonoBehaviour
 {
+    public void Awake()
+    {
+        Time.timeScale = 1;
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene("Tutorial");

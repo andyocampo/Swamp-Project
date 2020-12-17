@@ -235,6 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leapForce: 2
+  HasJumped: 0
   wallDetection: {fileID: 7086980387821838411}
 --- !u!95 &9032049070260828773
 Animator:
