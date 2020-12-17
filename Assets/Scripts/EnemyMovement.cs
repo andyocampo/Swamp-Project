@@ -11,11 +11,14 @@ public class EnemyMovement : MonoBehaviour
     Vector2 rayDirection;
     Rigidbody2D rB;
 
+    Animator animator;
+
     [SerializeField] Transform wallDetection;
 
     void Start()
     {
         rB = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -84,5 +87,22 @@ public class EnemyMovement : MonoBehaviour
         }
         Debug.DrawRay(wallDetection.position, rayDirection);
         //Debug.Log(wallInfo.distance);
+    }
+
+    public void PlayAnim()
+    {
+        StartCoroutine(EatFrogAnim());
+    }
+
+    private IEnumerator EatFrogAnim()
+    {
+        animator.SetBool("isEating", true);
+        rB.velocity = Vector2.zero;
+        yield return new WaitForSeconds(1.5f);
+        animator.SetBool("isEating", false);
+        Vector2 velocity = rB.velocity;
+        velocity.x = enemySpeed;
+        rB.velocity = velocity;
+        StopCoroutine(EatFrogAnim());
     }
 }

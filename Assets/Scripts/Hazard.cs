@@ -14,7 +14,16 @@ public class Hazard : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Frog"))
         {
-            Destroy(other.gameObject);
+            if (this.gameObject.CompareTag("Enemy"))
+            {
+                EnemyMovement snake = this.GetComponent<EnemyMovement>();
+                snake.PlayAnim();
+                Destroy(other.gameObject, .7f);
+            }
+            else
+            {
+                Destroy(other.gameObject);
+            }
             frogsDead++;
             FrogSpawner.amountOfFrogs--;
         }
